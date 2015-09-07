@@ -11,39 +11,39 @@ var Triarc;
     var Layout;
     (function (Layout) {
         Layout.mod.directive('tlHeightOf', ["$rootScope", function ($rootScope) {
-            return {
-                restrict: 'A',
-                link: function (scope, element, attrs) {
-                    element.css('overflow-y', 'auto');
-                    var owningClass = attrs.tlHeightOf;
-                    var owningElement = $(owningClass);
-                    var update = function () {
-                        var previousOverflow = owningElement.css("overflow-y");
-                        owningElement.css({ 'overflow': 'visible' });
-                        var height = owningElement[0].scrollHeight;
-                        if (attrs.tlHeightOfOffset) {
-                            height += +attrs.tlHeightOfOffset;
-                        }
-                        element.css('height', height);
-                        owningElement.css({ 'overflow': previousOverflow });
-                    };
-                    scope.$watch(function () { return owningElement[0].scrollHeight; }, function (val) {
-                        update();
-                    });
-                    attrs.$observe(attrs.tlHeightOf, function (newVal) {
-                        owningClass = attrs.tlHeightOf;
-                        owningElement = $(owningClass);
-                        update();
-                    });
-                    if (attrs.tlHeightOfOnEvent) {
-                        var eventName = scope.$eval(attrs.tlHeightOfOnEvent);
-                        scope.$on(eventName, function () {
+                return {
+                    restrict: 'A',
+                    link: function (scope, element, attrs) {
+                        element.css('overflow-y', 'auto');
+                        var owningClass = attrs.tlHeightOf;
+                        var owningElement = $(owningClass);
+                        var update = function () {
+                            var previousOverflow = owningElement.css("overflow-y");
+                            owningElement.css({ 'overflow': 'visible' });
+                            var height = owningElement[0].scrollHeight;
+                            if (attrs.tlHeightOfOffset) {
+                                height += +attrs.tlHeightOfOffset;
+                            }
+                            element.css('height', height);
+                            owningElement.css({ 'overflow': previousOverflow });
+                        };
+                        scope.$watch(function () { return owningElement[0].scrollHeight; }, function (val) {
                             update();
                         });
+                        attrs.$observe(attrs.tlHeightOf, function (newVal) {
+                            owningClass = attrs.tlHeightOf;
+                            owningElement = $(owningClass);
+                            update();
+                        });
+                        if (attrs.tlHeightOfOnEvent) {
+                            var eventName = scope.$eval(attrs.tlHeightOfOnEvent);
+                            scope.$on(eventName, function () {
+                                update();
+                            });
+                        }
                     }
-                }
-            };
-        }]);
+                };
+            }]);
     })(Layout = Triarc.Layout || (Triarc.Layout = {}));
 })(Triarc || (Triarc = {}));
 /// <reference path="tllayout.module.ts" />
