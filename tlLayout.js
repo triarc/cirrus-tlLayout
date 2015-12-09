@@ -2,7 +2,7 @@ var Triarc;
 (function (Triarc) {
     var Layout;
     (function (Layout) {
-        Layout.mod = angular.module('tlLayout', []);
+        angular.module('tlLayout', []);
     })(Layout = Triarc.Layout || (Triarc.Layout = {}));
 })(Triarc || (Triarc = {}));
 /// <reference path="tllayout.module.ts" />
@@ -10,7 +10,7 @@ var Triarc;
 (function (Triarc) {
     var Layout;
     (function (Layout) {
-        Layout.mod.directive('tlHeightOf', ["$rootScope", function ($rootScope) {
+        angular.module('tlLayout').directive('tlHeightOf', ["$rootScope", function ($rootScope) {
                 return {
                     restrict: 'A',
                     link: function (scope, element, attrs) {
@@ -53,7 +53,7 @@ var Triarc;
     var Layout;
     (function (Layout) {
         // declare correct angularjs module
-        Layout.mod.directive('tlWindowHeight', [
+        angular.module('tlLayout').directive('tlWindowHeight', [
             function () {
                 return {
                     restrict: "A",

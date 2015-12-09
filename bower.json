@@ -1,7 +1,9 @@
 {
   "name": "cirrus-tlLayout",
   "version": "0.0.7",
-  "main": "tlLayout.js",
+  "main": [
+    "tlLayout.js"
+  ],
   "moduleType": [
     "globals"
   ],
